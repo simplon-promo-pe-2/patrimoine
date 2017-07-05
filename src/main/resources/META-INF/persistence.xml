@@ -4,6 +4,7 @@
 		<!--  facultatif si une seule implémentation JPA dans le classpath -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>co.simplon.poleEmploi.patrimoine.modele.Ville</class>
+		<class>co.simplon.poleEmploi.patrimoine.modele.Monument</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql8.freemysqlhosting.net:3306/sql8157970"/>
 			<property name="javax.persistence.jdbc.user" value="sql8157970"/>
