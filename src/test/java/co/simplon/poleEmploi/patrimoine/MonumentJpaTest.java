@@ -26,6 +26,7 @@ public class MonumentJpaTest {
 		// THEN
 		assertEquals(idRecherche, monument.getIdentifiant());
 		assertEquals("Tour Eiffel", monument.getNom());
-		assertEquals(3685, monument.getIdentifiantVille());
+		assertEquals(new Long(3685), monument.getVille().getId());
+		assertEquals("Palis", monument.getVille().getNom());
 	}
 }
