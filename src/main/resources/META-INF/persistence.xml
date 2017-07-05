@@ -7,6 +7,7 @@
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql8.freemysqlhosting.net:3306/sql8157970"/>
 			<property name="javax.persistence.jdbc.user" value="sql8157970"/>
+			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 		</properties>
 	</persistence-unit>

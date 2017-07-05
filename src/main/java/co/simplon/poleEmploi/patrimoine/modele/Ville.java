@@ -19,6 +19,12 @@ public class Ville {
 	@Column(name = "NAME")
 	private String nom;
 
+	@Column(name = "LATITUDE")
+	private double latitude;
+
+	@Column(name = "LONGITUDE")
+	private double longitude;
+
 	public Long getId() {
 		return id;
 	}
@@ -33,5 +39,13 @@ public class Ville {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public double getLongitude() {
+		return this.longitude;
+	}
+
+	public double getLatitude() {
+		return this.latitude;
 	}
 }
