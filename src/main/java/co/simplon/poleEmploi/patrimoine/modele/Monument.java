@@ -14,9 +14,6 @@ public class Monument implements Serializable {
 	@Column(name = "ID", unique = true, nullable = false)
 	private Long identifiant;
 
-	@Column(name = "CITIES_ID", nullable = false, insertable = false, updatable = false)
-	private int identifiantVille;
-
 	@Column(name = "NAME", nullable = false, length = 100)
 	private String nom;
 	
@@ -40,12 +37,9 @@ public class Monument implements Serializable {
 		this.identifiant = identifiant;
 	}
 
-	public int getIdentifiantVille() {
-		return this.identifiantVille;
-	}
-
-	public void setIdentifiantVille(int citiesId) {
-		this.identifiantVille = citiesId;
+	@Deprecated
+	public Long getIdentifiantVille() {
+		return this.ville.getId();
 	}
 
 	public String getNom() {
