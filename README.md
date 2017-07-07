@@ -65,7 +65,7 @@ Mettez à jour votre mapping JPA afin de configurer la (ou les) relation(s) mise
 
 ## Etape 9
 
-Dans le package *co.simplon.poleEmploi.patrimoine.dao*, définir une interface **MonumentDao** avec la méthode suivante : *Monument getVMonumentById(Long id);*
+Dans le package *co.simplon.poleEmploi.patrimoine.dao*, définir une interface **MonumentDao** avec la méthode suivante : *Monument getMonumentById(Long id);*
 
 Créer une classe **MonumentJpaDao** dans le package *co.simplon.poleEmploi.patrimoine.dao* qui va implémenter l'interface **MonumentDao**. Vous pouvez vous inspirer du code présent dans **VilleJpaTest** pour réaliser l'implémentation.
 
@@ -81,6 +81,10 @@ Enrichir la méthode *main* de la classe **GestionnairePatrimoine** pour appeler
 
 :question: Avez-vous vérifié si le monument a été supprimé mais que la ville n'a (évidemment) pas été supprimée de son côté ?
 
+:information_source: L'absence de transaction peut expliquer que votre monument n'ait pas été supprimé.
+
+:question: Votre code est-il suffisament robuste pour qu'une suppression d'un monument inexistant (pas de correspondance avec l'id) n'arrête pas le programme ? Quelle amélioration pourriez-vous apporter pour le scénario de suppression de monument inexistant ?
+
 ## Etape 11
 
 Enrichir le fichier **persistence.xml** avec la propriété *hibernate.show_sql* à la valeur *true* et reexecuter le programme **GestionnairePatrimoine**
@@ -89,11 +93,17 @@ Observer les requêtes SQL exécutées par JPA.
 
 ## Etape 12
 
-Ajouter à l'interface **MonumentDao** une méthode *Monument createMonument(Monument monument);* et réaliser son implémentation dans **MonumentJpaDao**.
+Ajouter à l'interface **MonumentDao** une méthode *Monument createMonument(Monument monument, Long identifiantVille);* et réaliser son implémentation dans **MonumentJpaDao**.
 
-Enrichir la méthode *main* de la classe **GestionnairePatrimoine** pour appeler la méthode *Monument createMonument(Monument monument);* avec un monument créé pour l'occasion
+Enrichir la méthode *main* de la classe **GestionnairePatrimoine** pour appeler la méthode *Monument createMonument(Monument monument, Long identifiantVille);* avec un monument créé pour l'occasion
 
 :question: Avez-vous vérifié que l'instance de **Monument** renvoyée par la méthode *createMonument* comportait un id qui correspond à celui positionné par la base de données de façon automatique ?
+
+:question: Avez-vous vérifié que l'instance de **Monument** était bien rattachée à la ville dont vous avez fourni l'identifiant ?
+
+:question: Si la relation est bi-directionnelle, avez-vous mis à jour votre modèle objet de part et d'autre lors de l'ajout du monument ?
+
+:question: Votre code a-t-il bien généré un unique ordre SQL de type INSERT ?
 
 ## Etape 13 (Bonus, sujet plus avancé)
 
