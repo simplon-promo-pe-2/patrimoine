@@ -13,7 +13,7 @@ import co.simplon.poleEmploi.patrimoine.modele.Monument;
 public class MonumentJpaTest {
 
 	@Test
-	public void le_monument_d_identifiant_5_doit_etre_Tour_Eiffel() {
+	public void le_monument_d_identifiant_5_doit_etre_Tour_Eiffel_et_etre_a_Palis() {
 		// GIVEN
 		Long idRecherche = 5L;
 
@@ -26,6 +26,7 @@ public class MonumentJpaTest {
 		// THEN
 		assertEquals(idRecherche, monument.getIdentifiant());
 		assertEquals("Tour Eiffel", monument.getNom());
-		assertEquals(3685, monument.getIdentifiantVille());
+		assertEquals(new Long(3685), monument.getVille().getId());
+		assertEquals("Palis", monument.getVille().getNom());
 	}
 }

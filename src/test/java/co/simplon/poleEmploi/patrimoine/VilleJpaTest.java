@@ -17,10 +17,7 @@ public class VilleJpaTest {
 		// GIVEN
 		Long idRecherche = 25925L;
 
-		// WHEN
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("BasePatrimoine");
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = getEntityManager();
 		Ville ville = em.find(Ville.class, idRecherche);
 
 		// THEN
@@ -28,5 +25,25 @@ public class VilleJpaTest {
 		assertEquals("Forstfeld", ville.getNom());
 		assertEquals(48.85, ville.getLatitude(), 0);
 		assertEquals(8.033333, ville.getLongitude(), 0);
+	}
+	
+	@Test
+	public void cilaos_doit_avoir_2_monuments() {
+		// GIVEN
+		Long idRecherche = 33958L;
+
+		// WHEN
+		EntityManager em = getEntityManager();
+		Ville ville = em.find(Ville.class, idRecherche);
+
+		// THEN
+		assertEquals(2, ville.getMonuments().size());
+	}
+
+	private EntityManager getEntityManager() {
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("BasePatrimoine");
+		EntityManager em = emf.createEntityManager();
+		return em;
 	}
 }

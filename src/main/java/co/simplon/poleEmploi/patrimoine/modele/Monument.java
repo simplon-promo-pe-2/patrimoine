@@ -14,11 +14,12 @@ public class Monument implements Serializable {
 	@Column(name = "ID", unique = true, nullable = false)
 	private Long identifiant;
 
-	@Column(name = "CITIES_ID", nullable = false)
-	private int identifiantVille;
-
 	@Column(name = "NAME", nullable = false, length = 100)
 	private String nom;
+	
+	@ManyToOne
+	@JoinColumn(name = "CITIES_ID")
+	private Ville ville;
 
 	public Monument(String nom) {
 		super();
@@ -36,20 +37,20 @@ public class Monument implements Serializable {
 		this.identifiant = identifiant;
 	}
 
-	public int getIdentifiantVille() {
-		return this.identifiantVille;
-	}
-
-	public void setIdentifiantVille(int citiesId) {
-		this.identifiantVille = citiesId;
-	}
-
 	public String getNom() {
 		return this.nom;
 	}
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public Ville getVille() {
+		return ville;
+	}
+
+	public void setVille(Ville ville) {
+		this.ville = ville;
 	}
 
 }
