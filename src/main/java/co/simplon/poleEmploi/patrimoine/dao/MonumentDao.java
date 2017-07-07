@@ -6,4 +6,6 @@ public interface MonumentDao {
 	Monument getMonumentById(Long id);
 
 	void deleteMonumentById(Long id);
+
+	Monument createMonument(Monument monument, Long identifiantVille);
 }

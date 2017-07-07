@@ -42,6 +42,10 @@ public class GestionnairePatrimoine {
 			System.out.println("Le monument d'id " + idMonument + " a été supprimé");
 		}
 		
+		Monument nouveauMonument = new Monument("La montagne des singes");
+		Monument monumentCree = monumentDao.createMonument(nouveauMonument, 13L);
+		System.out.println("Le monument créé est le suivant : " + monumentCree);
+		
 		
 	}
 
