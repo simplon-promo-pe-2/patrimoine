@@ -8,13 +8,34 @@ import co.simplon.poleEmploi.patrimoine.modele.Monument;
 
 public class MonumentJpaDao implements MonumentDao {
 
+	private EntityManager cachedEntityManager = null;
+	
 	@Override
 	public Monument getMonumentById(Long id) {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("BasePatrimoine");
-		EntityManager em = emf.createEntityManager();
-		
+		EntityManager em = getEntityManager();
+
 		return em.find(Monument.class, id);
+	}
+
+	@Override
+	public void deleteMonumentById(Long id) {
+		EntityManager em = getEntityManager();
+		
+		em.getTransaction().begin();
+		Monument monument = getMonumentById(id);
+		if (monument != null) {
+			em.remove(monument);
+		}
+		em.getTransaction().commit();
+		
+	}
+
+	private EntityManager getEntityManager() {
+		if (cachedEntityManager == null) {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("BasePatrimoine");
+			cachedEntityManager = emf.createEntityManager();
+		}
+		return cachedEntityManager;
 	}
 
 }
