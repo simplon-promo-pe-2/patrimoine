@@ -16,7 +16,7 @@ public class Monument implements Serializable {
 
 	@Column(name = "NAME", nullable = false, length = 100)
 	private String nom;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "CITIES_ID")
 	private Ville ville;
@@ -51,6 +51,11 @@ public class Monument implements Serializable {
 
 	public void setVille(Ville ville) {
 		this.ville = ville;
+	}
+
+	@Override
+	public String toString() {
+		return "Monument [identifiant=" + identifiant + ", nom=" + nom + ", ville=" + ville + "]";
 	}
 
 }

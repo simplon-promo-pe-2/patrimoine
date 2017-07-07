@@ -73,4 +73,9 @@ public class Ville {
 		this.monuments = monuments;
 	}
 
+	@Override
+	public String toString() {
+		return "Ville [id=" + id + ", nom=" + nom + ", latitude=" + latitude + ", longitude=" + longitude + "]";
+	}
+
 }
